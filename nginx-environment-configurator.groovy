@@ -34,7 +34,7 @@ def locationDirectives = ""
 
 locations.eachWithIndex { it, index ->
     def proxypath = proxypaths[index]
-    locationDirectives = locationDirectives << "\n        location $it {\n            proxy_path $proxypath\n        }\n"
+    locationDirectives = locationDirectives << "\n        location $it {\n            proxy_path $proxypath;\n        }\n"
 }
 
 def confTemplate = """
