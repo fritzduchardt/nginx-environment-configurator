@@ -10,31 +10,31 @@ println "Generating $confLocation based on environment"
 
 def counter = 1
 def locations = []
-def proxypaths = []
+def proxypasses = []
 
 while(true) {
 
     def location = System.getenv("LOCATION_$counter")
-    def proxypath = System.getenv("PROXYPATH_$counter")
+    def proxypass = System.getenv("PROXYPASS_$counter")
 
-    if (!location || !proxypath) {
+    if (!location || !proxypass) {
         break;
     }
     locations << location
-    proxypaths << proxypath
+    proxypasses << proxypass
     counter++
 }
 
-if (locations.size() == 0 || proxypaths.size() == 0) {
-    System.err.println("No LOCATION environment variable with matching PROXYPATH found, e.g.: LOCATION_1=/ and PROXYPATH_1=http://localhost:9090");
+if (locations.size() == 0 || proxypasses.size() == 0) {
+    System.err.println("No LOCATION environment variable with matching PROXYPASS found, e.g.: LOCATION_1=/ and PROXYPASS_1=http://localhost:9090");
     System.exit(1)
 }
 
 def locationDirectives = ""
 
 locations.eachWithIndex { it, index ->
-    def proxypath = proxypaths[index]
-    locationDirectives = locationDirectives << "\n        location $it {\n            proxy_path $proxypath;\n        }\n"
+    def proxypass = proxypasses[index]
+    locationDirectives = locationDirectives << "\n        location $it {\n            proxy_pass $proxypass;\n        }\n"
 }
 
 def confTemplate = """
