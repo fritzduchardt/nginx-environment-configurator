@@ -9,7 +9,7 @@ The container is translating environment variable with prefix "LOCATION_" and "P
 
 E.g. `LOCATION_1=/` and `PROXYPASS_1`=http://localhost:8080/ would result in the following NGINX `default.conf`: 
 
-``` json
+``` 
 server {
     listen       80;
     listen  [::]:80;
