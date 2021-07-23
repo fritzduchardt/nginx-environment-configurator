@@ -1,5 +1,5 @@
 FROM groovy
-
+ENV test=hi
 LABEL maintainer="fduchardt"
 
 COPY . .
